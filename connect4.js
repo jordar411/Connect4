@@ -52,26 +52,6 @@ function makeHtmlBoard() {
 	}
 }
 
-// // STEP FIVE (backwards, I know...) findSpotForCol and endGame
-// Right now, the game drops always drops a piece to the top of the column, even if a piece is already there.
-//Fix this function so that it finds the lowest empty spot in the game board and returns the y coordinate (or null if the column is filled).
-// Once you have this working, make sure that when a game has ended, the endGame function runs and alerts which user has won!
-
-function findSpotForCol(x) {
-	// Create an array of the picked x column, check through the array from the
-	// bottom up to check if each spot is null or not. If null, return that array.
-	const yArr = [];
-	for (let i = 0; i < board.length; i++) {
-		yArr[i] = board[i][x];
-	}
-	for (let i = yArr.length - 1; i >= 0; i--) {
-		if (yArr[i] === null) {
-			return i;
-		}
-	}
-	return null;
-}
-
 // STEP THREE: placeInTable & Piece CSS
 // This function should add a div inside the correct td cell in the HTML game board.
 // This div should have the piece class on it, and should have a class for whether the current player is 1 or 2, like p1 or p2.
@@ -134,6 +114,26 @@ function checkForTie() {
 			return space !== null;
 		});
 	});
+}
+
+// // STEP FIVE findSpotForCol and endGame
+// Right now, the game drops always drops a piece to the top of the column, even if a piece is already there.
+//Fix this function so that it finds the lowest empty spot in the game board and returns the y coordinate (or null if the column is filled).
+// Once you have this working, make sure that when a game has ended, the endGame function runs and alerts which user has won!
+
+function findSpotForCol(x) {
+	// Create an array of the picked x column, check through the array from the
+	// bottom up to check if each spot is null or not. If null, return that array.
+	const yArr = [];
+	for (let i = 0; i < board.length; i++) {
+		yArr[i] = board[i][x];
+	}
+	for (let i = yArr.length - 1; i >= 0; i--) {
+		if (yArr[i] === null) {
+			return i;
+		}
+	}
+	return null;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
