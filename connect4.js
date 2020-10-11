@@ -173,8 +173,7 @@ function turnChecker() {
 	}
 }
 
-// Updates localStorage on new wins, and changes text on screen to
-// represent winner
+// Do some fun stuff
 function onWin() {
 	win = true;
 	alert(`Player ${currPlayer} Wins!`);
